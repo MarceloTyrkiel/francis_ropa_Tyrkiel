@@ -12,6 +12,6 @@ export default function CartWidget({img,carro}) {
            className="d-inline-block align-top"
        />{' '}
        {carro}
-      </div>
+    </div>
   )
 }
