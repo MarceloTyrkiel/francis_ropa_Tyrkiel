@@ -1,5 +1,5 @@
 import React , {useState} from 'react'
-import {Card, Button,Container} from "react-bootstrap"
+import {Card, Button} from "react-bootstrap"
 
 export default function ItemCount({stock, inicial, onAdd}) {
 
@@ -18,24 +18,19 @@ export default function ItemCount({stock, inicial, onAdd}) {
     }
   }
 
-  
-
   return (
-   <Container>
-        <hr class="mt-3"/>
+   <>
+        <hr className="mt-3"/>
         <div>
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '17rem' }}>
         <Card.Body>
-            <Card.Title>Conjunto de Ropa Interior</Card.Title>
-            <Card.Text>
-                Body
-            </Card.Text>
             
-            <row className="d-flex gap-2 justify-content-between mb-3">
+            
+            <span className="d-flex gap-2 justify-content-between mb-3">
                  <Button onClick = {()=> aumentarStock()} variant="outline-dark">+</Button>
                  <p>{auxStock}</p>
                  <Button onClick = {()=> disminuirStock()} variant="outline-dark">-</Button>
-            </row>    
+            </span>    
             
             <div className="d-grid gap-2">
                 <Button  onClick = {()=> onAdd(auxStock)} variant="primary" size="lg">Agregar al carrito</Button>
@@ -45,6 +40,6 @@ export default function ItemCount({stock, inicial, onAdd}) {
         </Card>
         </div>
         
-    </Container> 
+    </> 
   )
 }

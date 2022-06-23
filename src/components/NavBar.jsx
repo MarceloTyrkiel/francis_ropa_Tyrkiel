@@ -1,8 +1,8 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navbar, Nav,Container} from "react-bootstrap" 
-import CartWidget from "./CartWidget";
-import ItemListContainer from "./ItemListContainer";
+import CartWidget from "./CartWidget/CartWidget";
+import ItemListContainer from "./ItemListContainer/ItemListContainer";
 
 export default function NavBar() {
   return (
