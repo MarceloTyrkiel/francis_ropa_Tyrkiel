@@ -8,9 +8,7 @@ export default function ItemList({articulos}) {
  
     <div className="contenedor">
         {
-           articulos.map((articulo) => (<Item key={articulo.id} id={articulo.id} title={articulo.title}
-                                              description={articulo.description} price={articulo.price}
-                                              pictureURL={articulo.pictureURL}/>)
+           articulos.map((articulo) => (<Item key={articulo.id} articulo={articulo}/>)
            )
           
         }

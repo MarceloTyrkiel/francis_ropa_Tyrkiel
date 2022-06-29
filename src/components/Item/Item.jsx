@@ -1,27 +1,34 @@
 import React from 'react'
 import {Card, Button} from "react-bootstrap"
-import ItemCount from '../ItemCount/ItemCount'
+//import ItemCount from '../ItemCount/ItemCount'
+import {Link} from "react-router-dom"
 
-export default function Item({id,price,title,description,pictureURL}) {
-  function onAdd(){
-    console.log("Agregaste un producto")
-  }
+export default function Item({articulo}) {
+ // function onAdd(){
+ //   console.log("Agregaste un producto")
+ // }
+
+ 
+
   return (
     <div >
+
       <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={pictureURL} />
+        <Card.Img variant="top" src={articulo.pictureURL} />
         <Card.Body>
-          <Card.Title>{title}</Card.Title>
+          <Card.Title>{articulo.title}</Card.Title>
           <Card.Text>
-              {description}
+              {articulo.description}
           </Card.Text>
           <Card.Text>
-              $ {price}
+              $ {articulo.price}
           </Card.Text>
-          <Button variant="primary">Detalles</Button>
-          <ItemCount stock={5} inicial = {1} onAdd={onAdd}/>
+          <Link to={"/item/2"}>ARTICULO ELEGIDO</Link>
+         
         </Card.Body>
       </Card>
     </div>  
   )
 }
+//<ItemCount stock={5} inicial = {1} onAdd={onAdd}/>
+//<Button variant="primary">Detalles</Button>

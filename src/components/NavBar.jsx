@@ -36,10 +36,11 @@ export default function NavBar() {
                   </Navbar.Collapse>
               
             </Navbar>
-            <ItemListContainer saludo="GREETINGS"/>
+          
         </Container>
       </>
      </div>
   );
 }
 
+// <ItemListContainer saludo="GREETINGS"/>
