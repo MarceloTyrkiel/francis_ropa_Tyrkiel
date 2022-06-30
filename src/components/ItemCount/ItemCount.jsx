@@ -24,17 +24,15 @@ export default function ItemCount({stock, inicial, onAdd}) {
         <div>
         <Card style={{ width: '17rem' }}>
         <Card.Body>
-            
-            
-            <span className="d-flex gap-2 justify-content-between mb-3">
-                 <Button onClick = {()=> aumentarStock()} variant="outline-dark">+</Button>
+           
+            <span className="d-flex gap-3 justify-content-between mb-3">
+                 <Button onClick = {()=> aumentarStock()} variant="light" size="sm">+</Button>
                  <p>{auxStock}</p>
-                 <Button onClick = {()=> disminuirStock()} variant="outline-dark">-</Button>
+                 <Button onClick = {()=> disminuirStock()} variant="light" size="sm">-</Button>
             </span>    
-            
-            <div className="d-grid gap-2">
-                <Button  onClick = {()=> onAdd(auxStock)} variant="primary" size="lg">Agregar al carrito</Button>
           
+            <div className="d-grid gap-2">
+                <Button  onClick = {()=> onAdd(auxStock)} variant="outline-secondary" size="sm">Agregar al carrito</Button>
             </div>
         </Card.Body>
         </Card>
