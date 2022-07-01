@@ -41,3 +41,7 @@ export default function ItemCount({stock, inicial, onAdd}) {
     </> 
   )
 }
+
+//<div className="d-grid gap-2">
+//                <Button  onClick = {()=> onAdd(auxStock)} variant="outline-secondary" size="sm">Agregar al carrito</Button>
+//            </div>

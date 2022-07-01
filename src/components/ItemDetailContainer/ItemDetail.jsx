@@ -3,8 +3,8 @@ import {Card, Figure} from "react-bootstrap"
 import ItemCount from '../ItemCount/ItemCount'
 
 export default function ItemDetail({articulosDetalle}) {
-  function onAdd(){
-    console.log("Agregaste un producto")
+  function onAdd(auxStock){
+    alert ("Quiero agregar " + auxStock + " de " + articulosDetalle.description)
   }
   return (
     <>
@@ -37,6 +37,7 @@ export default function ItemDetail({articulosDetalle}) {
               <Card.Text>
                   Precio : $ {articulosDetalle.price}
               </Card.Text>
+
               <ItemCount stock={articulosDetalle.stock} inicial = {1} onAdd={onAdd}/>
             </Card.Body>
           </Card>
