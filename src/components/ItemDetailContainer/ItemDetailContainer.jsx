@@ -1,10 +1,8 @@
 //ts-check
 import React, {useEffect,useState} from 'react'
-
-import ItemDetail from '../ItemDetailContainer/ItemDetail';
+import ItemDetail from '../ItemDetail/ItemDetail';
 import {useParams} from "react-router-dom";
 import "./ItemDetailContainer.css"
-
 
 export default function ItemDetailContainer() {
 
@@ -12,8 +10,6 @@ const[loading, setLoading] = useState(true)
 const[error, setError] = useState(false)
 const[articulosDetalle,setArticulosDetalle] = useState({})
 let {idItem} = useParams();
-
-
 
 let articuloElegido;
 useEffect(()=>{
@@ -47,7 +43,6 @@ useEffect(()=>{
       });
     },[idItem]);
 
-
   return (
     <>
          
@@ -60,7 +55,6 @@ useEffect(()=>{
           </div>
       </div>
     </> 
-    
   )
   }
 //Saque este llamado del desafio anterior   

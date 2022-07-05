@@ -1,10 +1,15 @@
 import React from 'react'
-import {Card, Figure} from "react-bootstrap"
+import {Card, Figure,Button} from "react-bootstrap"
 import ItemCount from '../ItemCount/ItemCount'
+import {Link} from "react-router-dom"
 
 export default function ItemDetail({articulosDetalle}) {
   function onAdd(auxStock){
+
+
     alert ("Quiero agregar " + auxStock + " de " + articulosDetalle.description)
+  
+
   }
   return (
     <>
@@ -19,14 +24,19 @@ export default function ItemDetail({articulosDetalle}) {
             <Figure.Caption>
               Articulo elegido : {articulosDetalle.id}
             </Figure.Caption>
+            <div className="d-grid gap-2 mt-1">
+            <Link to={'/cart'}>            
+                <Button variant="outline-secondary" size="sm">Finalizar compra</Button>
+             </Link>    
+            </div>
           </Figure>
         </div>
         <div >
-          <Card style={{ width: '20rem' }}>
+          <Card style={{ width: '18rem' }}>
           
             <Card.Body>
               <Card.Title>{articulosDetalle.title}</Card.Title>
-              <Card.Text>
+              <Card.Text >
                   {articulosDetalle.description}
               </Card.Text>
               <Card.Text>
@@ -42,9 +52,9 @@ export default function ItemDetail({articulosDetalle}) {
             </Card.Body>
           </Card>
         </div>
-         
     </>  
   )
 }
 
 
+//<Link to={'/cart'}>

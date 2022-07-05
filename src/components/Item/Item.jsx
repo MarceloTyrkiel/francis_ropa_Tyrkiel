@@ -4,13 +4,9 @@ import {Link} from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Item({articulo}) {
- 
-
   return (
     <div >
       <>
-            
-          
               <Card style={{ width: '20.3rem' }}>
                 <Card.Img variant="top" src={articulo.pictureURL}/>
                 <Card.Body>
@@ -25,8 +21,6 @@ export default function Item({articulo}) {
                 
                 </Card.Body>
               </Card>
-         
-        
       </>
     </div>  
   )

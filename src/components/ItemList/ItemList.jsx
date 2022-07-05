@@ -16,7 +16,5 @@ export default function ItemList({articulos}) {
         }
       </div>  
     </Container>
-  
   )
-
 };  
