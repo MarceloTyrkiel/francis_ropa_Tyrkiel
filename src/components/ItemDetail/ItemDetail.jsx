@@ -1,16 +1,20 @@
-import React from 'react'
+import React , {useState} from 'react'
 import {Card, Figure,Button} from "react-bootstrap"
 import ItemCount from '../ItemCount/ItemCount'
 import {Link} from "react-router-dom"
 
+
+
+
 export default function ItemDetail({articulosDetalle}) {
-  function onAdd(auxStock){
-
-
-    alert ("Quiero agregar " + auxStock + " de " + articulosDetalle.description)
   
-
+ const [count, setCount] = useState(0)
+  function onAdd(auxStock){
+    setCount (count + auxStock) 
+    //console.log(auxStock) 
+    // alert ("Quiero agregar " + auxStock + " de " + articulosDetalle.description)
   }
+
   return (
     <>
         <div>
@@ -46,12 +50,14 @@ export default function ItemDetail({articulosDetalle}) {
               </Card.Text>
               <Card.Text>
                   Precio : $ {articulosDetalle.price}
+               
               </Card.Text>
-
+                   
               <ItemCount stock={articulosDetalle.stock} inicial = {1} onAdd={onAdd}/>
             </Card.Body>
           </Card>
         </div>
+        
     </>  
   )
 }
