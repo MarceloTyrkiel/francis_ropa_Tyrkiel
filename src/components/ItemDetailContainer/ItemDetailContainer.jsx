@@ -49,7 +49,7 @@ useEffect(()=>{
       <div>
           {loading && "Loading...."}
           {error && "No te quedes esperando..."}
-          <div class="contenedorDetalle">
+          <div className="contenedorDetalle">
               
              {articulosDetalle && <ItemDetail articulosDetalle={articulosDetalle}/>}
           </div>

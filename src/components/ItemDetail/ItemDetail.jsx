@@ -1,16 +1,24 @@
-import React , {useState} from 'react'
-import {Card, Figure,Button} from "react-bootstrap"
-import ItemCount from '../ItemCount/ItemCount'
-import {Link} from "react-router-dom"
-
+import React , {useState} from 'react';
+import {Card, Figure,Button} from "react-bootstrap";
+import ItemCount from '../ItemCount/ItemCount';
+import {Link} from "react-router-dom";
+import { useContext } from 'react';
+import {CartContext} from '../CartContext/CartContext';
 
 
 
 export default function ItemDetail({articulosDetalle}) {
-  
+
+const {id,pictureURL,title,description,price} = articulosDetalle 
+
+ const { addItem } = useContext(CartContext)
  const [count, setCount] = useState(0)
-  function onAdd(auxStock){
+
+   
+  function onAdd(auxStock, articulosDetalle){
+    addItem(articulosDetalle, auxStock);
     setCount (count + auxStock) 
+    
     //console.log(auxStock) 
     // alert ("Quiero agregar " + auxStock + " de " + articulosDetalle.description)
   }
@@ -23,10 +31,10 @@ export default function ItemDetail({articulosDetalle}) {
               width={250}
               height={400}
               alt="171x180"
-              src={articulosDetalle.pictureURL}
+              src={pictureURL}
             />
             <Figure.Caption>
-              Articulo elegido : {articulosDetalle.id}
+              Articulo elegido : {id}
             </Figure.Caption>
             <div className="d-grid gap-2 mt-1">
             <Link to={'/cart'}>            
@@ -39,9 +47,9 @@ export default function ItemDetail({articulosDetalle}) {
           <Card style={{ width: '18rem' }}>
           
             <Card.Body>
-              <Card.Title>{articulosDetalle.title}</Card.Title>
+              <Card.Title>{title}</Card.Title>
               <Card.Text >
-                  {articulosDetalle.description}
+                  {description}
               </Card.Text>
               <Card.Text>
                 Conjunto de encaje y tricot. Corpiño top triangulito con espalda regulable y cola less 
@@ -49,11 +57,12 @@ export default function ItemDetail({articulosDetalle}) {
                 Colores: Blanco / Negro / Rosa vintage / Verde militar
               </Card.Text>
               <Card.Text>
-                  Precio : $ {articulosDetalle.price}
+                  Precio : $ {price}
                
               </Card.Text>
                    
               <ItemCount stock={articulosDetalle.stock} inicial = {1} onAdd={onAdd}/>
+               
             </Card.Body>
           </Card>
         </div>
