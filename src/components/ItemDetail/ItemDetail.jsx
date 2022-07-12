@@ -3,7 +3,7 @@ import {Card, Figure,Button} from "react-bootstrap";
 import ItemCount from '../ItemCount/ItemCount';
 import {Link} from "react-router-dom";
 import { useContext } from 'react';
-import {CartContext} from '../CartContext/CartContext';
+import {myContext} from '../CartContext/CartContext';
 
 
 
@@ -11,11 +11,11 @@ export default function ItemDetail({articulosDetalle}) {
 
 const {id,pictureURL,title,description,price} = articulosDetalle 
 
- const { addItem } = useContext(CartContext)
+ const {addItem}  = useContext(myContext)
  const [count, setCount] = useState(0)
 
    
-  function onAdd(auxStock, articulosDetalle){
+  function onAdd(auxStock){
     addItem(articulosDetalle, auxStock);
     setCount (count + auxStock) 
     

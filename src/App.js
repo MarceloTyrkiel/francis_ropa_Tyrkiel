@@ -18,7 +18,7 @@ function App() {
               <Route path="/" element={<ItemListContainer/>}/>
               <Route path="/category/:idCategory" element={<ItemListContainer/>}/>
               <Route path="/item/:idItem" element={<ItemDetailContainer/>}/>
-              <Route path="/cart" element={<CartContext/>}/>
+              
           </Routes>
           </BrowserRouter>
       </CartContext>  
@@ -29,4 +29,4 @@ function App() {
 
 export default App;
 
-//<NavBar/>
+//<Route path="/cart" element={<CartContext/>}/>
