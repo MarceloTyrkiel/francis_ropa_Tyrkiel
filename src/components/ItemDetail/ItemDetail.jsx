@@ -1,9 +1,8 @@
-import React , {useState} from 'react';
+import React , {useContext, useState} from 'react';
 import {Card, Figure,Button} from "react-bootstrap";
 import ItemCount from '../ItemCount/ItemCount';
 import {Link} from "react-router-dom";
-import { useContext } from 'react';
-import {CartContext} from '../../context/CartContext';
+import {CartContext} from '../../Context/CartContext';
 
 
 
@@ -16,7 +15,7 @@ export default function ItemDetail({articulosDetalle}) {
    
   function onAdd(auxStock){
     addItem(articulosDetalle, auxStock);
-    setCount (auxStock) 
+    //setCount (auxStock) 
     
     //console.log(auxStock) 
     // alert ("Quiero agregar " + auxStock + " de " + articulosDetalle.description)
