@@ -17,7 +17,7 @@ export default function Item({articulo}) {
                   <Card.Text>
                       Stock disponible : {articulo.stock}
                   </Card.Text>
-                  <Link to={`item/${[articulo.id]}`}>
+                  <Link to={`/item/${[articulo.id]}`}>
                       Ver detalle del producto
                   </Link>
                 </Card.Body>

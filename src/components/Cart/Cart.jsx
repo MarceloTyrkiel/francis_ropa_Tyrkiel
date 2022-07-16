@@ -9,7 +9,7 @@ export default function CartProvider() {
     <ul>
         {cart.length && cart.map(x=>
         <div>
-          <li key={x.id}>{x.description} precio:{x.price}</li>
+          <li key={x.id}>{x.description} precio:{x.price} count:{x.auxStock}</li>
         </div>
       )} 
     </ul>

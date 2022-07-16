@@ -12,10 +12,10 @@ export default function CartProvider({children}) {
   //console.log(articulosDetalle)
   //console.log(articulosDetalle.title)
     if (isInCart(articulosDetalle.id)){
-      let articulosDetalleAux = articulosDetalle;
+      let articulosDetalleAux = cart;
       let indx = articulosDetalleAux.findIndex(element => element.id === articulosDetalle.id);
       articulosDetalleAux[indx]["auxStock"] += auxStock;
-      setCart(articulosDetalleAux)
+      setCart([...articulosDetalleAux])
    } else {
       setCart([...cart,{...articulosDetalle,auxStock}])
       console.log(cart)
@@ -26,8 +26,8 @@ export default function CartProvider({children}) {
      return cart.find((element) => element.id === id)
   }
   
-  function removeItem(articulosDetalle){
-      setCart(cart.filter(item => item.id !== articulosDetalle.id ))
+  function removeItem(id){
+      setCart(cart.filter(item => item.id !== id ))
  }
    
     function clear(){
