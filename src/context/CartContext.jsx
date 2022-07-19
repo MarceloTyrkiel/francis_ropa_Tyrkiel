@@ -15,10 +15,11 @@ export default function CartProvider({children}) {
       let articulosDetalleAux = cart;
       let indx = articulosDetalleAux.findIndex(element => element.id === articulosDetalle.id);
       articulosDetalleAux[indx]["auxStock"] += auxStock;
+      articulosDetalleAux[indx]["total"] += auxStock * articulosDetalle.price;
       setCart([...articulosDetalleAux])
    } else {
-      setCart([...cart,{...articulosDetalle,auxStock}])
-      console.log(cart)
+      setCart([...cart,{...articulosDetalle,auxStock, total: articulosDetalle.price * auxStock}])
+   
    }
   }
     
@@ -33,8 +34,7 @@ export default function CartProvider({children}) {
     function clear(){
       setCart([]);
   }
-   
-  
+    
   return (
     <>
       <CartContext.Provider value={{isInCart, addItem, removeItem ,clear, cart}}>
