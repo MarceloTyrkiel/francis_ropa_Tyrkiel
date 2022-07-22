@@ -2,7 +2,8 @@ import React, {useContext} from 'react';
 import  {CartContext}  from '../../Context/CartContext';
 import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
-import {Container} from 'react-bootstrap'
+import {Container} from 'react-bootstrap';
+import  "./Cart.css"
 
 export default function CartProvider() {
   const {cart, removeItem} = useContext(CartContext); 
@@ -32,7 +33,7 @@ export default function CartProvider() {
                 <td>{cart.map( x => <div key={x.id}> {x.auxStock} </div>)}</td>
                 <td>{cart.map( x => <div key={x.id}> {x.price} </div>)}</td>
                 <td>{cart.map( x => <div key={x.id}> {x.total} </div>)}</td>
-                <td>{cart.map( x => <button onClick={()=> removeItem(x.id)}>Eliminar</button>)}</td>
+                <div class="mis-botones">{cart.map( x => <button onClick={()=> removeItem(x.id)}>Eliminar</button>)}</div>
               </tr>
             </tbody>
           </Table>
