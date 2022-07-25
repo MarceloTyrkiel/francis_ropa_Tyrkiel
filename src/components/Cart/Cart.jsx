@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import  {CartContext}  from '../../Context/CartContext';
 import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
-import {Container} from 'react-bootstrap';
+import {Container, Button} from 'react-bootstrap';
 import  "./Cart.css"
 
 export default function CartProvider() {
@@ -33,18 +33,24 @@ export default function CartProvider() {
                 <td>{cart.map( x => <div key={x.id}> {x.auxStock} </div>)}</td>
                 <td>{cart.map( x => <div key={x.id}> {x.price} </div>)}</td>
                 <td>{cart.map( x => <div key={x.id}> {x.total} </div>)}</td>
-                <div class="mis-botones">{cart.map( x => <button onClick={()=> removeItem(x.id)}>Eliminar</button>)}</div>
+                <td className="mis-botones">{cart.map( x => <button key={x.id} onClick={()=> removeItem(x.id)}>Eliminar</button>)}</td>
               </tr>
             </tbody>
           </Table>
+            <div className="comprar">
               <span>El total de tu carrito de compras es : ${cart.reduce((p, c) => p + c.total,0)}.00</span>
+              <Link to={'/checkout'}>
+                 <Button className="estilo-boton" variant="secondary">Comprar</Button>{' '}  
+              </Link>
+             </div>    
+        
         </Container>
       </>
       :
       <>
            <Container>
             <h1>No tenes productos seleccionados</h1>
-                <Link to="/">
+                <Link to={'/cart'}>
                     <span>Haz click para ir al home</span>
                 </Link>
             </Container>

@@ -7,8 +7,7 @@ import {BrowserRouter,Routes,Route} from "react-router-dom";
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import  CartProvider   from './Context/CartContext';
 import Cart from "./components/Cart/Cart"
-import TestConsulta from './firebase/TestConsulta';
-import Coleccion  from './firebase/Coleccion';
+import Checkout from './components/checkout/Checkout';
 
 
 function App() {
@@ -23,10 +22,7 @@ function App() {
               <Route path="/category/:idCategory" element={<ItemListContainer/>}/>
               <Route path="/item/:idItem" element={<ItemDetailContainer/>}/>
               <Route path="/cart" element={<Cart/>}/>
-              
-              <Route path="/testconsulta" element={<TestConsulta/>}/>
-              <Route path="/coleccion" element={<Coleccion/>}/>
-              
+              <Route path="/checkout" element={<Checkout/>}/>
           </Routes>
           </BrowserRouter>
       </CartProvider>  

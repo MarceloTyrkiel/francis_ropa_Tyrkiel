@@ -11,10 +11,6 @@ export default function ItemDetail({articulosDetalle}) {
    
   function onAdd(auxStock){
     addItem(articulosDetalle, auxStock);
-    //setCount (auxStock) 
-    
-    //console.log(auxStock) 
-    // alert ("Quiero agregar " + auxStock + " de " + articulosDetalle.description)
   }
 
   return (

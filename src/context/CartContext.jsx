@@ -35,6 +35,9 @@ export default function CartProvider({children}) {
       setCart([]);
   }
     
+    
+
+    
   return (
     <>
       <CartContext.Provider value={{isInCart, addItem, removeItem ,clear, cart}}>
