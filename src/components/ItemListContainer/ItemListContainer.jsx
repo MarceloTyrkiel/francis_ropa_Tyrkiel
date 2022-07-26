@@ -15,7 +15,7 @@ useEffect(() => {
   const db = getFirestore();
  
  //TRAER TODA LA COLECCION 
- const art = idCategory ? query(collection(db, 'items'), where('category', '==' ,'idCategory'))
+ const art = idCategory ? query(collection(db, 'items'), where('category', '==' ,`${idCategory}`))
                         : collection(db,'items');
  
   getDocs(art).then((res) => {

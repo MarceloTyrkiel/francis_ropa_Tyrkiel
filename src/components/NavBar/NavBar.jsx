@@ -31,7 +31,7 @@ export default function NavBar() {
                     <Nav className="mb-lg-2  bg-secondary width-40 ">
                             <Link id="Home" to={"/"} >Home </Link>
                             <Link id="menu_body" to={"/category/Body"} >Bodies </Link>
-                            <Link id="menu_conjunto" to={"/category/Conjunto"} >Conjuntos </Link>
+                            <Link id="menu_conjunto" to={"/category/Conjuntos"} >Conjuntos </Link>
                             <Link id="menu_corpiño" to={"/category/Corpiño"} >Corpiños</Link> 
                             <Link id="menu_bombacha" to={"/category/Mallas"} >Trajes de baño </Link>
                     </Nav>
