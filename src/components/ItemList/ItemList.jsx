@@ -7,14 +7,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default function ItemList({articulos}) {
   return (
  
-    <Container>
-      <div className ="contenedor" >
+   <Container >
+      <div className ="d-flex align-content-end flex-wrap" >
         {
            articulos.map((articulo) => (<Item key={articulo.id} articulo={articulo}/>)
            )
-          
         }
-      </div>  
-    </Container>
+      </div>
+    </Container> 
+    
   )
 };  

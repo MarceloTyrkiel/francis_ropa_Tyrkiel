@@ -16,10 +16,9 @@ export default function CartProvider() {
           <Table striped bordered hover size="sm">
             <thead>
               <tr>
-                <th>Tipo</th>
+                <th>Cantidad</th>
                 <th>Descripcion</th>
                 <th>Articulo</th>
-                <th>Cantidad</th>
                 <th>Precio unitario</th>
                 <th>Subtotal</th>
                 <th>Borrar</th>
@@ -27,18 +26,17 @@ export default function CartProvider() {
             </thead>
             <tbody>
               <tr>
-                <td>{cart.map( x => <div key={x.id}> {x.title} </div>)}</td>
-                <td>{cart.map( x => <div key={x.id}> {x.description} </div>)}</td>
-                <td>{cart.map( x => <div key={x.id}> {x.id} </div>)}</td>
                 <td>{cart.map( x => <div key={x.id}> {x.auxStock} </div>)}</td>
-                <td>{cart.map( x => <div key={x.id}> {x.price} </div>)}</td>
-                <td>{cart.map( x => <div key={x.id}> {x.total} </div>)}</td>
+                <td>{cart.map( x => <div key={x.id}> {x.description} </div>)}</td>
+                <td>{cart.map( x => <div key={x.id}> {x.Articulo} </div>)}</td>
+                <td>{cart.map( x => <div key={x.id}> $ {x.price} </div>)}</td>
+                <td>{cart.map( x => <div key={x.id}> $ {x.total} </div>)}</td>
                 <td className="mis-botones">{cart.map( x => <button key={x.id} onClick={()=> removeItem(x.id)}>Eliminar</button>)}</td>
               </tr>
             </tbody>
           </Table>
             <div className="comprar">
-              <span>El total de tu carrito de compras es : ${cart.reduce((p, c) => p + c.total,0)}.00</span>
+              <span>El total de tu carrito de compras es : $ {cart.reduce((p, c) => p + c.total,0)}</span>
               <Link to={'/checkout'}>
                  <Button className="estilo-boton" variant="secondary">Comprar</Button>{' '}  
               </Link>
@@ -50,7 +48,7 @@ export default function CartProvider() {
       <>
            <Container>
             <h1>No tenes productos seleccionados</h1>
-                <Link to={'/cart'}>
+                <Link to={'/'}>
                     <span>Haz click para ir al home</span>
                 </Link>
             </Container>

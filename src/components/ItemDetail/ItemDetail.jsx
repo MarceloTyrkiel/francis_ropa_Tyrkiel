@@ -6,7 +6,7 @@ import {CartContext} from '../../Context/CartContext';
 
 export default function ItemDetail({articulosDetalle}) {
 
- const {id,pictureURL,title,description,price} = articulosDetalle 
+ const {pictureURL,title,description,price,Articulo} = articulosDetalle 
  const {addItem}  = useContext(CartContext)
    
   function onAdd(auxStock){
@@ -24,7 +24,7 @@ export default function ItemDetail({articulosDetalle}) {
               src={pictureURL}
             />
             <Figure.Caption>
-              Articulo elegido : {id}
+              Articulo elegido : {Articulo}
             </Figure.Caption>
             <div className="d-grid gap-2 mt-1">
             <Link to={'/cart'}>            
