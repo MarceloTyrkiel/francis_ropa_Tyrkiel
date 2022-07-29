@@ -116,7 +116,7 @@ export default function Checkout() {
 							/>
 							<ErrorMessage name="email" component={() => (<div className="error">{errors.email}</div>)} />
 						</div>
-					   <button onClick={handleClickComprar}>Comprar</button>
+					   <button  type="submit">Comprar</button>
                	
 						{formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
 					</Form>
@@ -133,4 +133,5 @@ export default function Checkout() {
             <input onChange={(e)=> setNombre(e.target.value)} type={'text'} placeholder={'Ingrese nombre'}></input><br/>
             <input onChange={(e)=> setTel(e.target.value)} type={'tel'} placeholder={'Ingrese tel'}></input><br />
             <input onChange={(e)=> setEmail(e.target.value)} type={'email'} placeholder={'Ingrese email'}></input><br />
+			 <button  onClick={handleClickComprar}>Comprar</button>
 */            

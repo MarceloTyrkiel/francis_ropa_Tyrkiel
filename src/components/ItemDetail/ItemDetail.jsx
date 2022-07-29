@@ -8,7 +8,9 @@ export default function ItemDetail({articulosDetalle}) {
 
  const {pictureURL,title,description,price,Articulo} = articulosDetalle 
  const {addItem}  = useContext(CartContext)
-   
+ const {cart}  = useContext(CartContext) 
+ 
+ 
   function onAdd(auxStock){
     addItem(articulosDetalle, auxStock);
   }
