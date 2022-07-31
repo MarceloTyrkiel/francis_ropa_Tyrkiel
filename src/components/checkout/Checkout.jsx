@@ -1,13 +1,16 @@
 import React , {useContext} from 'react'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {collection, getFirestore, addDoc} from 'firebase/firestore';
 import  {CartContext}  from '../../Context/CartContext';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import {Container} from 'react-bootstrap';
+import {Container, Button} from 'react-bootstrap';
+import swal from 'sweetalert';
+
 
 export default function Checkout() {
-   const {cart} = useContext(CartContext); 
-   const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
+   const {cart, clear} = useContext(CartContext); 
+  
   
    const [idCompra, setIdCompra] = useState('');
 
@@ -23,70 +26,78 @@ export default function Checkout() {
        const db = getFirestore();
        const collectionRef = collection(db, 'pedidos');
        addDoc(collectionRef, pedido).then(({id}) => setIdCompra(id));
-  }
-    return (  
-      <Container>
-         <div>
-            <p>Su id de compra es : {idCompra}</p>
+	   
+    }
+
+	const exito=(()=>{
+		swal({
+		  title:"La compra fue exitosa",
+		  text:`${idCompra}`,
+		  icon:"success",
+		  timer:"2000",
+		})
+	})
+        return ( 
+	<div>	 
+		 {cart.length ?
+		 <>
+        <Container>
+		
+		 <div className="d-flex justify-content-center  flex-wrap">
             <>
 			<Formik
 				initialValues={{
 					nombre: '',
 					email: '',
-               tel:'',
-               apellido:''
+                    tel:'',
+                    apellido:''
 				}}
 				validate={(valores) => {
 					let errores = {};
-
-					// Validacion nombre
 					if(!valores.nombre){
 						errores.nombre = 'Por favor ingresa un nombre'
 					} else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.nombre)){
 						errores.nombre = 'El nombre solo puede contener letras y espacios'
 					}
-          // Validacion apellido
-					if(!valores.apellido){
+             		if(!valores.apellido){
 						errores.apellido = 'Por favor ingresa un apellido'
 					} else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.apellido)){
 						errores.apellido = 'El apellido solo puede contener letras y espacios'
 					}
-          // Validacion telefono
-					if(!valores.tel){
+                	if(!valores.tel){
 						errores.tel = 'Por favor ingresa un telefono'
 					} else if(!/^[0-9]{1,40}$/.test(valores.tel)){
 						errores.tel = 'El nombre solo puede contener numeros'
 					}
-			 // Validacion correo
-					if(!valores.email){
+			        if(!valores.email){
 						errores.email = 'Por favor ingresa un correo electronico'
 					} else if(!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(valores.email)){
 						errores.email = 'El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.'
 					}
-
 					return errores;
 				}}
 				onSubmit={(valores, {resetForm}) => {
-               handleClickComprar(valores.nombre,valores.tel, valores.email, valores.apellido)
-               resetForm();
-				   cambiarFormularioEnviado(true);
-					setTimeout(() => cambiarFormularioEnviado(false), 5000);
+                handleClickComprar(valores.nombre,valores.tel, valores.email, valores.apellido)
+                resetForm();
+	    		 
+     			   exito();	
+				   clear()
+                   
 				}}
-			>
+		     	>
 				{( {errors} ) => (
 					<Form className="formulario">
-             <label htmlFor="nombre">INGRESE SUS DATOS PERSONALES</label>
-						<div>
-							
-							<Field
+                      <label htmlFor="nombre">INGRESE SUS DATOS PERSONALES</label>
+					  <div>
+					    	<Field
 								type="text" 
 								id="nombre" 
 								name="nombre" 
 								placeholder="Ingrese su nombre"
 							/>
 							<ErrorMessage name="nombre" component={() => (<div className="error">{errors.nombre}</div>)} />
-						</div>
-            <div>
+					  </div>
+                      <div>
 							
 							<Field
 								type="text" 
@@ -95,19 +106,17 @@ export default function Checkout() {
 								placeholder="Ingrese su apellido"
 							/>
 							<ErrorMessage name="apellido" component={() => (<div className="error">{errors.apellido}</div>)} />
-						</div>
-            <div>
-							
-							<Field
+					  </div>
+                      <div>
+				     		<Field
 								type="text" 
 								id="tel" 
 								name="tel" 
 								placeholder="Ingrese su telefono"
 							/>
 							<ErrorMessage name="tel" component={() => (<div className="error">{errors.tel}</div>)} />
-						</div>
-						<div>
-							
+					  </div>
+					  <div>
 							<Field
 								type="text" 
 								id="email" 
@@ -116,22 +125,28 @@ export default function Checkout() {
 							/>
 							<ErrorMessage name="email" component={() => (<div className="error">{errors.email}</div>)} />
 						</div>
-					   <button  type="submit">Comprar</button>
-               	
-						{formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
+       				   <button  type="submit">Comprar</button>
+               	       
 					</Form>
 				)}
 			</Formik>
 		</>
-          
-         </div>
-         </Container>
+        </div>
+      </Container>
+	  </>
+	  :
+      <>
+        <Container>
+			<p>Su id de compra es : {idCompra}</p>
+			
+			<Link to={'/'}>
+			<Button variant="outline-secondary" size="sm">Haz click para volver al Home</Button>
+             </Link>
+		</Container>	  
+	  </>
+    }
+	</div>  
     );
 }
-/*
-<h1>Complete para terminar su compra</h1>
-            <input onChange={(e)=> setNombre(e.target.value)} type={'text'} placeholder={'Ingrese nombre'}></input><br/>
-            <input onChange={(e)=> setTel(e.target.value)} type={'tel'} placeholder={'Ingrese tel'}></input><br />
-            <input onChange={(e)=> setEmail(e.target.value)} type={'email'} placeholder={'Ingrese email'}></input><br />
-			 <button  onClick={handleClickComprar}>Comprar</button>
-*/            
+      
+//{formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}

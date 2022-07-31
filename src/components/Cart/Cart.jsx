@@ -1,19 +1,27 @@
 import React, {useContext} from 'react';
 import  {CartContext}  from '../../Context/CartContext';
 import { Link } from 'react-router-dom';
-import Table from 'react-bootstrap/Table';
-import {Container, Button} from 'react-bootstrap';
+import {Container, Button, Table} from 'react-bootstrap';
 import  "./Cart.css"
+import swal from 'sweetalert';
 
 export default function CartProvider() {
-  const {cart, removeItem} = useContext(CartContext); 
+  const {cart, removeItem,clear} = useContext(CartContext); 
+   const cartel=(()=>{
+      swal({
+        title:"El carrito esta vacio",
+        text:"Home",
+        icon:"success",
+        timer:"2000",
+      })
+   })
 
-  return (
+   return (
     <div>
       {cart.length ?
       <>
         <Container>
-          <Table striped bordered hover size="sm">
+          <Table responsive striped bordered hover >
             <thead>
               <tr>
                 <th>Cantidad</th>
@@ -27,29 +35,31 @@ export default function CartProvider() {
             <tbody>
               <tr>
                 <td>{cart.map( x => <div key={x.id}> {x.auxStock} </div>)}</td>
-                <td>{cart.map( x => <div key={x.id}> {x.description} </div>)}</td>
+                <td>{cart.map( x => <div key={x.id}> {x.category} </div>)}</td>
                 <td>{cart.map( x => <div key={x.id}> {x.Articulo} </div>)}</td>
                 <td>{cart.map( x => <div key={x.id}> $ {x.price} </div>)}</td>
                 <td>{cart.map( x => <div key={x.id}> $ {x.total} </div>)}</td>
-                <td className="mis-botones">{cart.map( x => <button key={x.id} onClick={()=> removeItem(x.id)}>Eliminar</button>)}</td>
+                <td className="mis-botones">{cart.map( x => <button key={x.id} onClick={()=> removeItem(x.id)}>X</button>)}</td>
               </tr>
             </tbody>
           </Table>
-            <div className="comprar">
+            <div className="comprar mt-3">
               <span>El total de tu carrito de compras es : $ {cart.reduce((p, c) => p + c.total,0)}</span>
               <Link to={'/checkout'}>
-                 <Button className="estilo-boton" variant="secondary">Comprar</Button>{' '}  
+                 <Button className="estilo-boton mt-3" variant="secondary">Comprar</Button>{' '}  
               </Link>
-             </div>    
-        
+              <div className='mt-3'>
+                  <Button onClick={()=> clear()}>Vaciar el carrito</Button>
+              </div>    
+            </div>    
         </Container>
       </>
       :
       <>
            <Container>
-            <h1>No tenes productos seleccionados</h1>
+               {cartel()}
                 <Link to={'/'}>
-                    <span>Haz click para ir al home</span>
+                    <Button variant="outline-secondary mt-4" size="sm">Si quiere comprar , clickee aqui</Button>
                 </Link>
             </Container>
       </>
@@ -78,4 +88,5 @@ export default function CartProvider() {
         <span>No tenes productos, click para ir al home</span>
       </Link>}
 </div>
+ <Button onClick={()=> cartel()}>Vaciar el carrito</Button>
 */    

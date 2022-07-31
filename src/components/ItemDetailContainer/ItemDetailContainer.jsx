@@ -36,7 +36,7 @@ useEffect(() => {
       <div>
           {loading && "Loading...."}
           {error && "No te quedes esperando..."}
-          <div className="contenedorDetalle">
+          <div className="contenedorDetalle d-flex justify-content-center">
               
              {articulosDetalle && <ItemDetail articulosDetalle={articulosDetalle}/>}
           </div>

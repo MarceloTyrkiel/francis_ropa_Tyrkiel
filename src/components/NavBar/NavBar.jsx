@@ -12,7 +12,8 @@ export default function NavBar() {
     <div >
       <>
         <Container>
-            <Navbar collapseOnSelect expand="lg" bg="secondary" variant="dark">
+            <Navbar collapseOnSelect expand="lg" bg="secondary" variant="dark" className="d-flex justify-content-space-between">
+              <div>
               <Link to="/">
                   <Navbar.Brand href=""  className="justify-content-end">
                         <img
@@ -25,7 +26,7 @@ export default function NavBar() {
                         FRANCIS 
                   </Navbar.Brand>
                 </Link>
-
+                </div>
                   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                   <Navbar.Collapse  id="responsive-navbar-nav" className="justify-content-center "  >
                     <Nav className="mb-lg-2  bg-secondary width-40 ">

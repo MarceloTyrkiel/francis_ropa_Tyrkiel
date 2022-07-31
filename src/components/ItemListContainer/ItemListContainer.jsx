@@ -1,4 +1,3 @@
-//ts-check
 import React, {useEffect,useState} from 'react'
 import ItemList from '../ItemList/ItemList';
 import {useParams} from "react-router-dom";
@@ -13,8 +12,7 @@ let {idCategory} = useParams();
 
 useEffect(() => {
   const db = getFirestore();
- 
- //TRAER TODA LA COLECCION 
+  
  const art = idCategory ? query(collection(db, 'items'), where('category', '==' ,`${idCategory}`))
                         : collection(db,'items');
  
