@@ -11,7 +11,7 @@ https://francis-30cf8.web.app
 
 ## Mi repositorio
 
-https://github.com/MarceloTyrkiel/ropa_para_mujeres-Tyrkiel.git
+https://github.com/MarceloTyrkiel/francis_ropa_Tyrkiel.git
 
 ## Instalacion de librerias
 
