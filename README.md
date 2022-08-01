@@ -2,6 +2,13 @@
 
 Si bien este proyecto fue realizado para el curso de React de Coderhouse, la tienda existe y los productos responden a su catalogo de ventas. 
 ### `Arrancamos el proyecto con create-react-app`
+
+## Deploy
+
+Realizado con Firebase por considerarla mas segura y facil de realizar
+
+https://francis-30cf8.web.app
+
 ## Mi repositorio
 
 https://github.com/MarceloTyrkiel/ropa_para_mujeres-Tyrkiel.git
